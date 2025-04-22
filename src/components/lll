@@ -1,0 +1,211 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Layout from './Layout';
+import { lyrics } from '../data/lyrics-data';
+import {
+  AboutUsContainer,
+  LyricsContainer,
+  Header,
+  VideoCarouselContainer,
+  VideoCarouselWrapper,
+  VideoCard,
+  VideoThumbnail,
+  PlayButtonOverlay,
+  YTCarouselButton,
+  YouTubeModal,
+  YouTubeModalContent,
+  CloseButton,
+  LyricsGrid,
+  SongTile,
+  SongImage,
+  SongInfo,
+  LyricsModal,
+  LyricsModalContent,
+  LyricsHeader,
+  LyricsBody,
+  ShareButton,
+  SocialIcons
+} from './AboutUsStyles';
+
+const AboutUs = () => {
+    const [videos, setVideos] = useState([]);
+    const [selectedVideo, setSelectedVideo] = useState(null);
+    const [translateX, setTranslateX] = useState(0);
+  
+  
+    const youtubeApiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
+    const CHANNEL_NAME = 'StinoLeThwenny';
+  
+    // Fetch videos from the YouTube channel
+    useEffect(() => {
+      const fetchVideos = async () => {
+        try {
+          // Get the channel ID using the channel name
+          const channelResponse = await axios.get(
+            `https://www.googleapis.com/youtube/v3/search`,
+            {
+              params: {
+                part: 'snippet',
+                q: CHANNEL_NAME,
+                type: 'channel',
+                key: youtubeApiKey,
+              },
+            }
+          );
+  
+          const channelId = channelResponse.data.items[0].id.channelId;
+  
+          // Fetch videos from the channel using the channel ID
+          const videosResponse = await axios.get(
+            `https://www.googleapis.com/youtube/v3/search`,
+            {
+              params: {
+                part: 'snippet',
+                channelId: channelId,
+                maxResults: 20, // The number of videos to fetch
+                order: 'date', // Fetch the latest videos
+                type: 'video',
+                key: youtubeApiKey,
+              },
+            }
+          );
+  
+          // Extract video details
+          const videoList = videosResponse.data.items.map((item) => ({
+            id: item.id.videoId,
+            url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+            title: item.snippet.title,
+            thumbnail: item.snippet.thumbnails.medium.url,
+          }));
+  
+          setVideos(videoList);
+        } catch (error) {
+          console.error('Error fetching videos:', error);
+        }
+      };
+  
+      fetchVideos();
+    }, [youtubeApiKey]);
+  
+    // Function to open YouTube modal
+    const openYouTubeModal = (video) => {
+      setSelectedVideo(video);
+    };
+  
+    // Function to close YouTube modal
+    const closeYouTubeModal = () => {
+      setSelectedVideo(null);
+    };
+  
+
+  // Lyrics modal handlers
+  const openLyricsModal = (song) => {
+    setSelectedLyric(song);
+    setShowSocial(false);
+  };
+
+  const closeLyricsModal = () => setSelectedLyric(null);
+    // Carousel navigation functions
+    const handlePrev = () => {
+      setTranslateX((prev) => Math.min(prev + 310, 0));
+    };
+  
+    const handleNext = () => {
+      const maxTranslateX = -310 * (videos.length - 1); // Maximum scroll limit
+      setTranslateX((prev) => Math.max(prev - 310, maxTranslateX));
+    };
+
+
+  // Carousel handlers remain the same
+
+  return (
+    <Layout>
+      <AboutUsContainer>
+        <LyricsContainer>
+          <Header>Song Lyrics</Header>
+          <LyricsGrid>
+            {lyrics.map((song) => (
+              <SongTile key={song.id} onClick={() => openLyricsModal(song)}>
+                <SongImage src={song.image} alt={song.title} />
+                <SongInfo>
+                  <h4>{song.title}</h4>
+                  {song.feat && <p>Feat. {song.feat}</p>}
+                </SongInfo>
+              </SongTile>
+            ))}
+          </LyricsGrid>
+        </LyricsContainer>
+
+        {/* Lyrics Modal */}
+        {selectedLyric && (
+          <LyricsModal onClick={closeLyricsModal}>
+            <LyricsModalContent onClick={(e) => e.stopPropagation()}>
+              <LyricsHeader>
+                <SongImage src={selectedLyric.image} alt={selectedLyric.title} />
+                <div>
+                  <h3>{selectedLyric.title}</h3>
+                  {selectedLyric.feat && <p>Featuring: {selectedLyric.feat}</p>}
+                  <ShareButton onClick={() => setShowSocial(!showSocial)}>
+                    Share {showSocial ? '▲' : '▼'}
+                  </ShareButton>
+                  {showSocial && (
+                    <SocialIcons>
+                      <button>Twitter</button>
+                      <button>Facebook</button>
+                      <button>WhatsApp</button>
+                    </SocialIcons>
+                  )}
+                </div>
+              </LyricsHeader>
+              <LyricsBody>
+                {selectedLyric.lyrics.split('\n').map((line, index) => (
+                  <p key={index}>{line}</p>
+                ))}
+              </LyricsBody>
+              <CloseButton onClick={closeLyricsModal}>×</CloseButton>
+            </LyricsModalContent>
+          </LyricsModal>
+        )}
+
+                {/* Video Carousel */}
+                <Header>Featured Videos</Header>
+        <VideoCarouselContainer>
+          <YTCarouselButton className="prev" onClick={handlePrev}>
+            &#8249;
+          </YTCarouselButton>
+          <VideoCarouselWrapper translateX={translateX}>
+            {videos.map((video) => (
+              <VideoCard key={video.id} onClick={() => openYouTubeModal(video)}>
+                <VideoThumbnail src={video.thumbnail} alt={video.title} />
+                <PlayButtonOverlay>▶</PlayButtonOverlay>
+              </VideoCard>
+            ))}
+          </VideoCarouselWrapper>
+          <YTCarouselButton className="next" onClick={handleNext}>
+            &#8250;
+          </YTCarouselButton>
+        </VideoCarouselContainer>
+
+        {/* YouTube Modal */}
+        {selectedVideo && (
+          <YouTubeModal onClick={closeYouTubeModal}>
+            <YouTubeModalContent onClick={(e) => e.stopPropagation()}>
+              <iframe
+                width="100%"
+                height="450"
+                src={`https://www.youtube.com/embed/${selectedVideo.url.split('v=')[1]}`}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <CloseButton onClick={closeYouTubeModal}>×</CloseButton>
+            </YouTubeModalContent>
+          </YouTubeModal>
+        )}
+      </AboutUsContainer>
+    </Layout>
+  );
+};
+
+export default AboutUs;
