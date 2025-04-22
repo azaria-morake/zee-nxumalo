@@ -112,6 +112,15 @@ export const SongInfo = styled.div`
   padding: 0.5rem;
   text-align: center;
   color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 190px;
+  height: 120px;
+  background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5)),
+              url('./img-4.jpg');
+  //background-size: contain;
+
+
 
   h4 {
     margin: 0.5rem 0;
@@ -126,6 +135,8 @@ export const SongInfo = styled.div`
     text-align: left;
     flex-grow: 1;
     min-width: 0;
+    background: none;
+    border: none;
 
     h4 {
       margin: 0;

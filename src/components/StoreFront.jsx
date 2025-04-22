@@ -23,6 +23,7 @@ import {
   BookingHeader,
   BookingTitle,
   BookingDetails,
+  CarouselButton
 } from './HomepageStyles';
 
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
@@ -153,11 +154,14 @@ const Products = () => {
             alt={modalProduct.name}
             style={{ width: '100%', borderRadius: '8px' }}
           />
-          <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <button onClick={prevColor}>←</button>
+                      <CarouselButton className='prev' onClick={prevColor}>
+                        &#8249;
+                      </CarouselButton>
             <span>{modalProduct.colors[modalColorIndex].name}</span>
-            <button onClick={nextColor}>→</button>
-          </div>
+            <CarouselButton className='next' onClick={nextColor}>
+            &#8250;
+                      </CarouselButton>
+
         </Modal>
       )}
     </Layout>

@@ -50,6 +50,7 @@ export const ProductsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   width: 100%;
   box-sizing: border-box;
+  
 
 `;
 
@@ -58,8 +59,24 @@ export const ProductCard = styled.div`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5)),
+              url('/store/backgrounds/img-10.jpg');
   transition: transform 0.3s ease;
   position: relative;
+  background-size: contain;
+
+          /* noise/texture */
+          &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.1;
+      pointer-events: none;
+    }
 
   &:hover {
     transform: translateY(-5px);
@@ -79,25 +96,28 @@ export const ProductThumbnail = styled.img`
 export const ProductDetails = styled.div`
   padding: 1.5rem;
   margin-top: 1px;
+  color: white;
 `;
 
 export const ProductName = styled.h3`
   font-size: 1.2rem;
   margin: 0 0 0.5rem;
-  color: #333;
+  color: white;
 `;
 
 export const ProductDescription = styled.p`
   font-size: 0.9rem;
-  color: #666;
+  color: white;
   margin-bottom: 1rem;
   min-height: 10px;
+
 `;
 
 export const ColorOptions = styled.div`
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
+  
 `;
 
 export const ColorSwatch = styled.div`
@@ -108,6 +128,8 @@ export const ColorSwatch = styled.div`
   cursor: pointer;
   border: 2px solid ${props => props.selected ? '#333' : 'transparent'};
   transition: all 0.2s ease;
+  border: 1px solid white;
+
 
   img {
     width: 100%;
@@ -123,9 +145,10 @@ export const ColorSwatch = styled.div`
 export const ProductPrice = styled.button`
   width: 100%;
   padding: 1rem;
-  background: #333;
+  background: none; //previously #333;
   color: white;
-  border: none;
+  border: 1px solid white;
+
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
@@ -133,6 +156,7 @@ export const ProductPrice = styled.button`
 
   &:hover {
     background: #555;
+    
   }
 `;
 

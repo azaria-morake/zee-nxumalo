@@ -77,12 +77,12 @@ const Homepage = () => {
     '/img-2.jpg',
     '/img-3.jpg',
     '/img-4.jpg',
-    '/img-5.jpg',
-    '/img-6.jpg',
+    '/img-13.jpg',
+    '/img-20.jpg',
     '/img-7.jpg',
     '/img-8.jpg',
-    '/img-9.jpg',
-    '/bannerpic.jpg',
+    '/img-10.jpg',
+    '/bannerpic.jpeg',
   ];
 
   const visibleImages = Math.floor((carouselRef.current?.offsetWidth || 0) / imageWidth);

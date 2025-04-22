@@ -155,11 +155,12 @@ export const NavItem = styled.a`
   font-weight: bold;
   padding: 5px 15px;
   border-radius: 5px;
+  border: 1px solid white;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(56, 8, 230, 0.3);
+  //background-color: rgba(56, 8, 230, 0.3);
   height: 30px;
   width: fit-content;
   margin: 0 10px;
@@ -548,6 +549,7 @@ export const MobileNavItem = styled.a`
   margin: 8px;
   text-align: center;
   background: rgba(173, 173, 173, 0.1);
+  border: 1px solid white;
   transform: scale(0.8);
   opacity: 0;
   animation: ${popIn} 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
