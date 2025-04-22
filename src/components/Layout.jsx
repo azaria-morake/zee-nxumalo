@@ -192,18 +192,6 @@ const Layout = ({ children }) => {
                 
               <SpotifyEmbed />
 
-                          <PromoRow>
-              {promoItems.map((item, index) => {
-                const ItemComponent = item.component;
-                return (
-                  <ItemComponent
-                    key={index}
-                    onClick={() => (window.location.href = item.link)}
-                  />
-                );
-              })}
-            </PromoRow>
-
             </MobileMenu>
           </Wrapper>
 

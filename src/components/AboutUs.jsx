@@ -136,7 +136,7 @@ const AboutUs = () => {
       <PageWrapper>
                 <Header>Song Lyrics</Header>
       <AboutUsContainer>
-        <PageWrapper>
+
         {/* Lyrics Section */}
         <LyricsContainer>
 
@@ -198,7 +198,7 @@ const AboutUs = () => {
         )}
           */}
 
-        </PageWrapper>
+
       </AboutUsContainer>
               {/* Lyrics Modal */}
         {selectedLyric && (

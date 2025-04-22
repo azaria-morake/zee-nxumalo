@@ -160,26 +160,6 @@ const Products = () => {
           </div>
         </Modal>
       )}
-
-      <BookingsCard onClick={() => setShowBookings(!showBookings)}>
-        <BookingHeader>
-          <BookingTitle>Bookings</BookingTitle>
-          {showBookings ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}
-        </BookingHeader>
-        <AnimatePresence>
-          {showBookings && (
-            <BookingDetails
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
-              <p>☎️: +27 83 242 9237 / +27 78 036 4373</p>
-              <p>📧: info@kwanxumalo.com</p>
-            </BookingDetails>
-          )}
-        </AnimatePresence>
-        </BookingsCard>
     </Layout>
   );
 };

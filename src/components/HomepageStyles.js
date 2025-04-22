@@ -75,10 +75,11 @@ export const PageWrapper = styled.div`
 
 export const Wrapper = styled.div`
   background-color: rgba(44, 37, 51, 0.17);
-  background-image: url('/img-16.jpg');
+  background-image: url('/img-15.jpg');
   background-blend-mode: overlay;
+  border: 1px solid white;
   background-size: cover;
-  background-position: 20% 30%;
+  background-position: 20% 25%;
   padding: 10px 20px;
   border-radius: 10px;
   display: flex;
@@ -158,7 +159,7 @@ export const NavItem = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(207, 3, 47);
+  background-color: rgba(56, 8, 230, 0.3);
   height: 30px;
   width: fit-content;
   margin: 0 10px;
@@ -481,17 +482,19 @@ export const BurgerButton = styled.button`
   display: none;
   background: none;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   color: white;
   padding: 10px;
   margin-right: auto;
+  align-items: right; // tried to move it to the right here
   z-index: 1010; // Increased z-index to stay on top of everything
 
   @media (max-width: 768px) {
     display: block;
     position: inherit; // Changed to fixed
-    left: 10px;
-    top: 15px; // Adjusted top position
+    left: 100%;
+    top: 5%; // Adjusted top position
     z-index: 1010;
   }
 `;
