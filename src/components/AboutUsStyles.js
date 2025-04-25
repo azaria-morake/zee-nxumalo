@@ -80,6 +80,7 @@ export const SongTile = styled.div`
     padding: 12px;
     background-color: rgba(0, 0, 0, 0.79);
     border-radius: 8px;
+    height: 60px;
     margin: 0.5rem 0;
     //border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     
@@ -112,13 +113,14 @@ export const SongInfo = styled.div`
   padding: 0.5rem;
   text-align: center;
   color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  width: 190px;
-  height: 120px;
+  //border: 1px solid white;
+  //border-radius: 5px;
+ // width: 190px;
+ // height: 120px;
   background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5)),
               url('./img-4.jpg');
   //background-size: contain;
+
 
 
 
@@ -132,7 +134,7 @@ export const SongInfo = styled.div`
 
   @media (max-width: 720px) {
     padding: 0;
-    text-align: left;
+    text-align: end;
     flex-grow: 1;
     min-width: 0;
     background: none;
@@ -608,6 +610,8 @@ export const CenteredParagraph = styled.p`
 
   @media (max-width: 720px) {
     margin-bottom: 1.5rem;
+    font-size: 12px;
+
   }
 `;
 

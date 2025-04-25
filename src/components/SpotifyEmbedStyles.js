@@ -28,7 +28,7 @@ export const StyledIframe = styled.iframe`
   height: 100%;
   border-radius: 6px;
   display: block;
-  height: 500px; // Increases  sizes of contents like album art, etc
+  height: 550px; // Increases  sizes of contents like album art, etc
 
   @media (max-width: 720px) {
     //width: 300px;
@@ -55,8 +55,9 @@ export const SpotifyWrapper = styled.div`
 `;
 
 export const CenteredWrapper = styled.div`
-  width: 100%;
+  /*width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  */
 `;

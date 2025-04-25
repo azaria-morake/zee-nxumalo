@@ -509,7 +509,8 @@ export const MobileMenu = styled.div`
     position: fixed;
     top: 180px; /* Adjust based on header height */
     width: 65%;
-    height: calc(100vh - 80px);
+     height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
     background: rgba(5, 5, 5, 1.5);
     padding: 20px 60px;
     transform: translateY(-150%);
@@ -531,7 +532,7 @@ export const MobileMenu = styled.div`
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 150%;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       opacity: 0.1;
       pointer-events: none;
@@ -649,14 +650,14 @@ export const BookingDetails = styled(motion.div)`
   
   p {
     margin: 0.5rem 0;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    background-color: rgba(15, 15, 15, 0.65);
     padding: 0.5rem;
     border-radius: 5px;
     font-weight: 400;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(172, 172, 172, 0.58);
       color: black;
     }
   }
