@@ -649,5 +649,15 @@ export const BookingDetails = styled(motion.div)`
   
   p {
     margin: 0.5rem 0;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: 400;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: black;
+    }
   }
 `;
