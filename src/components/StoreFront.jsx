@@ -88,8 +88,8 @@ const Products = () => {
     },
     {
       id: 2,
-      name: 'Hooded Sweatshirt',
-      description: 'Premium cotton blend hoodie',
+      name: 'Basic T-Shirt',
+      description: 'Cotton crew neck t-shirt',
       price: 'R199',
       colors: [
         { name: 'Gray', image: 'store/items/img-0.png' },

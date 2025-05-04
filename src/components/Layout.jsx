@@ -46,7 +46,7 @@ const PromoRow = styled.div`
 const AlbumArt = styled.div`
   width: 80px;
   height: 80px;
-  background-image: url('/img-23.jpg');
+  background-image: url('/ngisakuthanda.png');
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -128,12 +128,12 @@ const Layout = ({ children }) => {
   const [isDesktop, setIsDesktop] = useState(true);
   
   const promoItems = [
-    { component: AlbumArt, link: "/album" },
-    { component: PreOrderButton, link: "/preorder" },
-    { component: SpotifyButton, link: "/spotify" },
-    { component: AppleButton, link: "/apple-music" }
+    { component: AlbumArt },
+    { component: PreOrderButton, },
+    { component: SpotifyButton, /* link: "/https://open.spotify.com/artist/5m5lgddffBHA2pv0m5E2Ro" */},
+    { component: AppleButton, /* link: "/https://music.apple.com/mt/artist/zee-nxumalo/1606439969" */}
   ];
-  const embedUrl = "https://open.spotify.com/embed/artist/1dfeR4HaWDbWqFHLkxsg1d?utm_source=generator"; // Replace with your artist/playlist
+  const embedUrl = "https://open.spotify.com/embed/artist/1dfeR4HaWDbWqFHLkxsg1d?utm_source=generator";
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
@@ -165,7 +165,7 @@ const Layout = ({ children }) => {
                 return (
                   <ItemComponent
                     key={index}
-                    onClick={() => (window.location.href = item.link)}
+                    //={() => (window.location.href = item.link)}
                   />
                 );
               })}

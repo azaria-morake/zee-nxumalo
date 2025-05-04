@@ -107,6 +107,7 @@ export const SongImage = styled.img`
     min-width: 60px;
     border-radius: 4px;
   }
+
 `;
 
 export const SongInfo = styled.div`
@@ -114,12 +115,13 @@ export const SongInfo = styled.div`
   text-align: center;
   color: white;
   //border: 1px solid white;
-  //border-radius: 5px;
+  border-radius: 5px;
  // width: 190px;
- // height: 120px;
-  background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5)),
-              url('./img-4.jpg');
+  height: 100px;
+  //background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5)),
+  //            url('./img-4.jpg');
   //background-size: contain;
+  background: linear-gradient( rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 5));
 
 
 
@@ -163,7 +165,7 @@ export const SongInfo = styled.div`
 
 export const LyricsModal = styled.div`
   position: fixed;
-  top: 40px;
+  top: 0px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -180,7 +182,7 @@ export const LyricsModalContent = styled.div`
   background: rgb(15, 15, 15);
   max-width: 700px;
   width: 90%;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow-y: auto;
   border-radius: 10px;
   padding: 60px;
