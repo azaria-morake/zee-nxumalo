@@ -146,7 +146,7 @@ const AboutUs = () => {
                 <SongImage src={song.image} alt={song.title} />
                 <SongInfo>
                   <h4>{song.title}</h4>
-                  {song.Artist && <p1>Artist: {song.Artist}</p1>}
+                  {song.Artist && <p>Artist: {song.Artist}</p>}
                   
                 {/*  <p>{song.feat && <p3>Feat. {song.feat}</p3>}</p> */}
                   

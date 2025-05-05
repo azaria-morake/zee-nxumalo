@@ -62,6 +62,7 @@ export const LyricsGrid = styled.div`
     flex-direction: column;
     gap: 0;
     margin-top: 0.5rem;
+    
   }
 `;
 
@@ -82,6 +83,7 @@ export const SongTile = styled.div`
     border-radius: 8px;
     height: 60px;
     margin: 0.5rem 0;
+    overflow: hidden;
     //border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     
     &:last-child {
@@ -113,7 +115,9 @@ export const SongImage = styled.img`
 export const SongInfo = styled.div`
   padding: 0.5rem;
   text-align: center;
+  overflow: hidden;
   color: white;
+  flex: 1;
   //border: 1px solid white;
   border-radius: 5px;
  // width: 190px;
@@ -134,13 +138,19 @@ export const SongInfo = styled.div`
     white-space: nowrap;
   }
 
-  @media (max-width: 720px) {
+
+    @media (max-width: 720px) {
     padding: 0;
-    text-align: end;
+    text-align: end;  /* Changed from end to left for better control */
     flex-grow: 1;
-    min-width: 0;
+    min-width: 0;  /* Important for proper flexbox behavior */
+    max-width: calc(100% - 75px);  /* Account for image width and gap */
+    height: auto;  /* Changed from fixed height */
     background: none;
     border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     h4 {
       margin: 0;
@@ -156,7 +166,7 @@ export const SongInfo = styled.div`
       font-size: 12px;
       margin: 0;
       color: #888;
-      white-space: wrap;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
