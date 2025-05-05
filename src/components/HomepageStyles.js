@@ -551,7 +551,7 @@ export const MobileNavItem = styled.a`
   text-align: center;
   background: rgb(124, 58, 115);
   // border: 1px solid white;
-  transform: scale(0.8);
+  transform: scale(0.8); // previously 0.1
   opacity: 0;
   animation: ${popIn} 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   transition: all 0.2s ease;
